@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Profile &amp; Settings - Artisanal Cafe</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700;800&amp;family=Hanken+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-background": "#2e150b",
+                    "on-primary-fixed": "#2b1613",
+                    "surface-bright": "#fff8f6",
+                    "tertiary-fixed": "#ffe088",
+                    "error-container": "#ffdad6",
+                    "outline-variant": "#d3c3c0",
+                    "primary": "#271310",
+                    "on-secondary-container": "#676351",
+                    "primary-container": "#3e2723",
+                    "surface-container": "#ffe9e3",
+                    "primary-fixed": "#ffdad4",
+                    "surface-container-highest": "#ffdbcf",
+                    "outline": "#827472",
+                    "inverse-surface": "#46291e",
+                    "on-secondary-fixed": "#1e1c0e",
+                    "secondary-fixed": "#e9e2cc",
+                    "inverse-primary": "#e3beb8",
+                    "on-primary": "#ffffff",
+                    "primary-fixed-dim": "#e3beb8",
+                    "on-tertiary-fixed": "#241a00",
+                    "error": "#ba1a1a",
+                    "background": "#fff8f6",
+                    "on-tertiary-container": "#4e3d00",
+                    "on-surface-variant": "#504442",
+                    "on-error": "#ffffff",
+                    "surface-tint": "#745853",
+                    "on-primary-container": "#ae8d87",
+                    "on-tertiary-fixed-variant": "#574500",
+                    "surface-variant": "#ffdbcf",
+                    "surface-container-high": "#ffe2d9",
+                    "on-surface": "#2e150b",
+                    "tertiary-container": "#cba72f",
+                    "inverse-on-surface": "#ffede7",
+                    "surface-dim": "#ffd0bf",
+                    "on-primary-fixed-variant": "#5b403c",
+                    "tertiary-fixed-dim": "#e9c349",
+                    "surface-container-low": "#fff1ec",
+                    "on-error-container": "#93000a",
+                    "on-secondary-fixed-variant": "#4a4737",
+                    "on-secondary": "#ffffff",
+                    "secondary-container": "#e6e0c9",
+                    "secondary": "#625f4d",
+                    "surface": "#fff8f6",
+                    "tertiary": "#735c00",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "secondary-fixed-dim": "#ccc6b1"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "unit": "8px",
+                    "container-padding-mobile": "16px",
+                    "section-gap": "48px",
+                    "gutter": "24px",
+                    "container-padding-desktop": "40px"
+            },
+            "fontFamily": {
+                    "display-lg": ["EB Garamond"],
+                    "body-lg": ["Hanken Grotesk"],
+                    "headline-sm": ["EB Garamond"],
+                    "label-lg": ["Hanken Grotesk"],
+                    "label-sm": ["Hanken Grotesk"],
+                    "headline-md": ["EB Garamond"],
+                    "body-sm": ["Hanken Grotesk"],
+                    "headline-lg": ["EB Garamond"],
+                    "body-md": ["Hanken Grotesk"]
+            },
+            "fontSize": {
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .gold-border-weighted {
+            border-bottom: 2px solid #D4AF37;
+        }
+        .soft-shadow {
+            box-shadow: 0 15px 30px -10px rgba(62, 39, 35, 0.04);
+        }
+        .custom-toggle:checked + .toggle-dot {
+            transform: translateX(100%);
+            background-color: #D4AF37;
+        }
+        .custom-toggle:checked ~ .toggle-bg {
+            background-color: #3e2723;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md selection:bg-tertiary-fixed">
+<!-- Top App Bar -->
+<header class="bg-background dark:bg-background border-b border-outline-variant/30 flex justify-between items-center w-full px-container-padding-mobile md:px-container-padding-desktop py-4 max-w-7xl mx-auto docked full-width top-0 z-50">
+<div class="flex items-center gap-4">
+<button class="text-primary dark:text-primary-fixed hover:text-tertiary dark:hover:text-tertiary-fixed transition-colors">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-display-lg text-primary dark:text-primary-fixed">Artisanal Cafe</h1>
+</div>
+<div class="w-10 h-10 rounded-full overflow-hidden border border-tertiary shadow-sm">
+<img alt="Profile Photo" class="w-full h-full object-cover" data-alt="A professional portrait of a senior manager in a boutique environment. The lighting is warm and directional, typical of a high-end cafe. The color palette features rich browns and cream tones. He has a calm and authoritative expression, dressed in a sharp apron over a linen shirt. The aesthetic is clean and modern professional with tactile luxury." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCu07-bhx5C2K9ZCd1ZzZwgUKVnWnr5mkmzNLGiCwa01jgYfXTqwqkB4zfPo5z01kMOSctn3LY_IfFqncbZGoG9577yLH41U_0UkqaynJq2x9cgy0Risfsu2VUTeKZ0xdmG0GNO0pk4KSuk_R1ouyscivFYijrU4f52NNEXaDxepJ9mWRlYzicE1BeqZ_A4U4wshTiTPKwYXGORc7tOVOkgdrEhwHf5bEEMA4hrbptqAJ8tYMxAHcre4mQWo-3UXxpeJASNQTPIBdCe"/>
+</div>
+</header>
+<main class="max-w-2xl mx-auto px-container-padding-mobile md:px-0 py-10 pb-32">
+<!-- Profile Section -->
+<section class="flex flex-col items-center mb-12">
+<div class="relative mb-4">
+<div class="w-32 h-32 rounded-full border-2 border-tertiary p-1 shadow-lg">
+<img alt="Avatar" class="w-full h-full rounded-full object-cover" data-alt="A detailed close-up portrait of a male cafe manager in a premium coffee shop setting. The background is softly blurred showing brass espresso machines and wood paneling. The lighting is cinematic with golden hour warmth, emphasizing a sophisticated and professional atmosphere with a cream and espresso color palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFl6MUivons4hrsUuaA5NDhTAogl_o_sUZ3x7OsMrkazvfiLFx84C8ijY933Om0e5LC-K00W7fya5q7iD1eq_juS_B64timN9Y-ltAvGCTWpfVEmqjWB14GMFMvmowLjDDVzdXbAPLX-3yQjEZFqFW2h1wcP3xZh7GCu50Iy6rulOJ6gkWDvmnKTHoVW3sXPd0Zj1dIGnYAHPv0dTyqANLDKhh62sbcF_pKsSVLbJgJq76acwoZxioon-hayesWq6ztDWRFpHxcVVa"/>
+</div>
+<div class="absolute bottom-0 right-0 bg-primary-container text-tertiary-fixed p-1.5 rounded-full border border-tertiary shadow-md">
+<span class="material-symbols-outlined text-[18px]" data-icon="verified">verified</span>
+</div>
+</div>
+<h2 class="font-display-lg text-headline-lg text-primary mb-1">Julian Thorne</h2>
+<div class="bg-tertiary-fixed/20 border border-tertiary px-4 py-1 rounded-full flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-tertiary" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-lg text-on-tertiary-fixed-variant tracking-wider">SENIOR MANAGER</span>
+</div>
+</section>
+<!-- Settings List -->
+<div class="space-y-4">
+<!-- App Settings Group -->
+<div class="bg-surface-container-lowest border border-outline-variant/30 rounded-xl overflow-hidden soft-shadow">
+<!-- Dark Mode -->
+<div class="flex items-center justify-between px-6 py-5 border-b border-outline-variant/10 hover:bg-surface-container-low transition-colors group">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-primary group-hover:text-tertiary transition-colors">
+<span class="material-symbols-outlined" data-icon="dark_mode">dark_mode</span>
+</div>
+<div>
+<p class="font-body-lg font-medium text-on-surface">Dark Mode</p>
+<p class="font-body-sm text-on-surface-variant">Switch to the dark luxury theme</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer custom-toggle" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container peer-focus:outline-none rounded-full peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+<!-- Notifications -->
+<div class="flex items-center justify-between px-6 py-5 border-b border-outline-variant/10 hover:bg-surface-container-low transition-colors group">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-primary group-hover:text-tertiary transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</div>
+<div>
+<p class="font-body-lg font-medium text-on-surface">Notifications</p>
+<p class="font-body-sm text-on-surface-variant">Manage alerts and sound signals</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer custom-toggle" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container peer-focus:outline-none rounded-full peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+<!-- Change Password -->
+<button class="w-full flex items-center justify-between px-6 py-5 border-b border-outline-variant/10 hover:bg-surface-container-low transition-all active:scale-[0.98] group">
+<div class="flex items-center gap-4 text-left">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-primary group-hover:text-tertiary transition-colors">
+<span class="material-symbols-outlined" data-icon="lock">lock</span>
+</div>
+<div>
+<p class="font-body-lg font-medium text-on-surface">Change Password</p>
+<p class="font-body-sm text-on-surface-variant">Update your security credentials</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline" data-icon="chevron_right">chevron_right</span>
+</button>
+<!-- Language -->
+<div class="flex items-center justify-between px-6 py-5 hover:bg-surface-container-low transition-colors group">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-primary group-hover:text-tertiary transition-colors">
+<span class="material-symbols-outlined" data-icon="translate">translate</span>
+</div>
+<div>
+<p class="font-body-lg font-medium text-on-surface">Language</p>
+<p class="font-body-sm text-on-surface-variant">Select interface language</p>
+</div>
+</div>
+<select class="bg-surface-container-low border-none rounded-lg font-label-lg text-primary focus:ring-1 focus:ring-tertiary cursor-pointer py-1 px-3">
+<option value="en">English</option>
+<option value="ur">Urdu</option>
+</select>
+</div>
+</div>
+<!-- About Group -->
+<div class="bg-surface-container-lowest border border-outline-variant/30 rounded-xl overflow-hidden soft-shadow">
+<!-- About -->
+<button class="w-full flex items-center justify-between px-6 py-5 border-b border-outline-variant/10 hover:bg-surface-container-low transition-all active:scale-[0.98] group">
+<div class="flex items-center gap-4 text-left">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-primary group-hover:text-tertiary transition-colors">
+<span class="material-symbols-outlined" data-icon="info">info</span>
+</div>
+<div>
+<p class="font-body-lg font-medium text-on-surface">About</p>
+<p class="font-body-sm text-on-surface-variant">Terms, policies and version info</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline" data-icon="chevron_right">chevron_right</span>
+</button>
+<!-- Logout -->
+<button class="w-full flex items-center justify-between px-6 py-5 hover:bg-error-container/20 transition-all active:scale-[0.98] group">
+<div class="flex items-center gap-4 text-left">
+<div class="w-10 h-10 rounded-lg bg-error-container/30 flex items-center justify-center text-error">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+</div>
+<div>
+<p class="font-body-lg font-medium text-error">Logout</p>
+<p class="font-body-sm text-on-error-container">Sign out of your session</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-error opacity-40" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Version Info -->
+<footer class="mt-12 text-center">
+<p class="font-label-sm text-outline tracking-widest uppercase mb-1">Artisanal Precision Software</p>
+<p class="font-body-sm text-on-surface-variant opacity-60">v1.0.4</p>
+</footer>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-safe bg-surface-container border-t border-tertiary-fixed/20 shadow-[0_-4px_15px_rgba(62,39,35,0.04)] h-20 rounded-t-full">
+<a class="flex flex-col items-center justify-center text-on-secondary-fixed-variant opacity-60 py-2 hover:bg-surface-container-high transition-colors active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="dashboard">dashboard</span>
+<span class="font-label-sm text-label-sm font-body-lg">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-secondary-fixed-variant opacity-60 py-2 hover:bg-surface-container-high transition-colors active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="restaurant_menu">restaurant_menu</span>
+<span class="font-label-sm text-label-sm font-body-lg">Menu</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-secondary-fixed-variant opacity-60 py-2 hover:bg-surface-container-high transition-colors active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="receipt_long">receipt_long</span>
+<span class="font-label-sm text-label-sm font-body-lg">Orders</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-secondary-fixed-variant opacity-60 py-2 hover:bg-surface-container-high transition-colors active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="analytics">analytics</span>
+<span class="font-label-sm text-label-sm font-body-lg">Insights</span>
+</a>
+<!-- Settings (Active Tab) -->
+<a class="flex flex-col items-center justify-center text-on-primary-fixed-variant border-t-2 border-tertiary py-2 transition-all hover:bg-surface-container-high active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined mb-1 text-tertiary" data-icon="settings" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span class="font-label-sm text-label-sm font-body-lg">Settings</span>
+</a>
+</nav>
+</body></html>

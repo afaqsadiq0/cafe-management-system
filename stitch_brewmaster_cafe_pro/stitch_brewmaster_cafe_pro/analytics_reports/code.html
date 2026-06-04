@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Artisanal Cafe - Analytics &amp; Reports</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&amp;family=Hanken+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #fff8f6;
+            -webkit-font-smoothing: antialiased;
+        }
+        .chart-bar {
+            transition: height 0.3s ease;
+        }
+        .serrated-edge {
+            mask-image: linear-gradient(-135deg, transparent 8px, #000 0), linear-gradient(135deg, transparent 8px, #000 0);
+            mask-size: 16px 100%;
+            mask-position: bottom;
+            mask-repeat: repeat-x;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-background": "#2e150b",
+                      "on-primary-fixed": "#2b1613",
+                      "surface-bright": "#fff8f6",
+                      "tertiary-fixed": "#ffe088",
+                      "error-container": "#ffdad6",
+                      "outline-variant": "#d3c3c0",
+                      "primary": "#271310",
+                      "on-secondary-container": "#676351",
+                      "primary-container": "#3e2723",
+                      "surface-container": "#ffe9e3",
+                      "primary-fixed": "#ffdad4",
+                      "surface-container-highest": "#ffdbcf",
+                      "outline": "#827472",
+                      "inverse-surface": "#46291e",
+                      "on-secondary-fixed": "#1e1c0e",
+                      "secondary-fixed": "#e9e2cc",
+                      "inverse-primary": "#e3beb8",
+                      "on-primary": "#ffffff",
+                      "primary-fixed-dim": "#e3beb8",
+                      "on-tertiary-fixed": "#241a00",
+                      "error": "#ba1a1a",
+                      "background": "#fff8f6",
+                      "on-tertiary-container": "#4e3d00",
+                      "on-surface-variant": "#504442",
+                      "on-error": "#ffffff",
+                      "surface-tint": "#745853",
+                      "on-primary-container": "#ae8d87",
+                      "on-tertiary-fixed-variant": "#574500",
+                      "surface-variant": "#ffdbcf",
+                      "surface-container-high": "#ffe2d9",
+                      "on-surface": "#2e150b",
+                      "tertiary-container": "#cba72f",
+                      "inverse-on-surface": "#ffede7",
+                      "surface-dim": "#ffd0bf",
+                      "on-primary-fixed-variant": "#5b403c",
+                      "tertiary-fixed-dim": "#e9c349",
+                      "surface-container-low": "#fff1ec",
+                      "on-error-container": "#93000a",
+                      "on-secondary-fixed-variant": "#4a4737",
+                      "on-secondary": "#ffffff",
+                      "secondary-container": "#e6e0c9",
+                      "secondary": "#625f4d",
+                      "surface": "#fff8f6",
+                      "tertiary": "#735c00",
+                      "surface-container-lowest": "#ffffff",
+                      "on-tertiary": "#ffffff",
+                      "secondary-fixed-dim": "#ccc6b1"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "unit": "8px",
+                      "container-padding-mobile": "16px",
+                      "section-gap": "48px",
+                      "gutter": "24px",
+                      "container-padding-desktop": "40px"
+              },
+              "fontFamily": {
+                      "display-lg": ["EB Garamond"],
+                      "body-lg": ["Hanken Grotesk"],
+                      "headline-sm": ["EB Garamond"],
+                      "label-lg": ["Hanken Grotesk"],
+                      "label-sm": ["Hanken Grotesk"],
+                      "headline-md": ["EB Garamond"],
+                      "body-sm": ["Hanken Grotesk"],
+                      "headline-lg": ["EB Garamond"],
+                      "body-md": ["Hanken Grotesk"]
+              },
+              "fontSize": {
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                      "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "500"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="text-on-background min-h-screen pb-24">
+<!-- Top Navigation -->
+<header class="bg-background border-b border-outline-variant/30 sticky top-0 z-50">
+<div class="flex justify-between items-center w-full px-container-padding-mobile md:px-container-padding-desktop py-4 max-w-7xl mx-auto">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary cursor-pointer">menu</span>
+<h1 class="font-headline-md text-headline-md font-display-lg text-primary">Artisanal Cafe</h1>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex gap-6 mr-6">
+<span class="font-label-lg text-on-surface-variant hover:text-tertiary cursor-pointer transition-colors">Dashboard</span>
+<span class="font-label-lg text-primary border-b-2 border-tertiary pb-1">Insights</span>
+</div>
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center border border-outline-variant/30 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a cafe manager in a high-end, minimalist studio environment. The lighting is soft and warm, reflecting a premium artisanal aesthetic with cream and deep brown tones in the background. The manager wears a clean, dark apron over a crisp shirt, embodying the spirit of craft and precision." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAeiIOXhKVEou0UD8SI2CzYcVzEOVsXoeBRC5UeNJfqpMucdpdax-Q2zRFwVz3fOhxbb4QOmpAp6PSsEYWCdDBWwL_rgxQO10msg7GvuYA3eylbYfRmMw9SilJCNnB0khVTGxFQgYJjF6dBoopInGlETawrm0tV6NCvUYr_VcO6gM8naxi8SnZ3GWH9r7vvrZ_0kR1L-CtfBKYnIbIa6BB4mRNzfOPhd2mJqdhToW9bg1jjT3dJUl1XxZtF1aUjbm_HBvNn_GWzgVFz"/>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-container-padding-mobile md:px-container-padding-desktop py-8">
+<!-- Screen Title & Date Filter -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+<div>
+<h2 class="font-headline-lg text-headline-lg font-display-lg text-primary mb-2">Performance Insights</h2>
+<p class="font-body-md text-on-surface-variant">Analytical overview of your cafe's daily operations and growth.</p>
+</div>
+<div class="flex bg-surface-container-low p-1 rounded-full border border-outline-variant/20 shadow-sm">
+<button class="px-6 py-2 rounded-full font-label-lg text-on-surface-variant hover:bg-surface-container-high transition-all">Today</button>
+<button class="px-6 py-2 rounded-full font-label-lg bg-primary-container text-on-primary-container shadow-md">Week</button>
+<button class="px-6 py-2 rounded-full font-label-lg text-on-surface-variant hover:bg-surface-container-high transition-all">Month</button>
+</div>
+</div>
+<!-- Key Stats Row -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter mb-12">
+<!-- Stat Card 1 -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-[0_4px_15px_rgba(62,39,35,0.04)] border border-outline-variant/10 relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-24 h-24 bg-tertiary/5 rounded-full -mr-8 -mt-8 transition-transform group-hover:scale-110"></div>
+<p class="font-label-sm text-on-surface-variant uppercase tracking-widest mb-2">Best Seller</p>
+<h3 class="font-headline-md text-headline-md font-display-lg text-primary">Honey Lavender Latte</h3>
+<div class="flex items-center gap-2 mt-4 text-tertiary">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">trending_up</span>
+<span class="font-label-lg">+12% from last week</span>
+</div>
+</div>
+<!-- Stat Card 2 -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-[0_4px_15px_rgba(62,39,35,0.04)] border border-outline-variant/10 relative overflow-hidden group">
+<p class="font-label-sm text-on-surface-variant uppercase tracking-widest mb-2">Peak Hour</p>
+<h3 class="font-headline-md text-headline-md font-display-lg text-primary">09:30 AM — 11:00 AM</h3>
+<div class="flex items-center gap-2 mt-4 text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">schedule</span>
+<span class="font-label-lg">High volume duration</span>
+</div>
+</div>
+<!-- Stat Card 3 -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-[0_4px_15px_rgba(62,39,35,0.04)] border border-outline-variant/10 relative overflow-hidden group">
+<p class="font-label-sm text-on-surface-variant uppercase tracking-widest mb-2">Total Customers</p>
+<h3 class="font-headline-md text-headline-md font-display-lg text-primary">1,428 Visitors</h3>
+<div class="flex items-center gap-2 mt-4 text-tertiary">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">stars</span>
+<span class="font-label-lg">84% Return rate</span>
+</div>
+</div>
+</div>
+<!-- Main Analytics Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter items-stretch">
+<!-- Revenue Bar Chart -->
+<div class="lg:col-span-2 bg-surface-container-lowest p-8 rounded-xl shadow-[0_4px_15px_rgba(62,39,35,0.04)] border border-outline-variant/10">
+<div class="flex justify-between items-center mb-8">
+<h3 class="font-headline-sm text-headline-sm font-display-lg text-primary">Revenue per Day</h3>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="w-3 h-3 rounded-full bg-tertiary"></span>
+<span class="font-label-sm">Gross Sales</span>
+</div>
+</div>
+<div class="h-64 flex items-end justify-between gap-4 px-2">
+<!-- Monday -->
+<div class="flex-1 flex flex-col items-center gap-3 group">
+<div class="w-full bg-surface-container-high rounded-t-lg relative">
+<div class="absolute bottom-0 w-full bg-primary-container/40 rounded-t-lg h-[45%] transition-all group-hover:bg-tertiary/60"></div>
+</div>
+<span class="font-label-sm text-on-surface-variant">Mon</span>
+</div>
+<!-- Tuesday -->
+<div class="flex-1 flex flex-col items-center gap-3 group">
+<div class="w-full bg-surface-container-high rounded-t-lg relative">
+<div class="absolute bottom-0 w-full bg-primary-container/40 rounded-t-lg h-[65%] transition-all group-hover:bg-tertiary/60"></div>
+</div>
+<span class="font-label-sm text-on-surface-variant">Tue</span>
+</div>
+<!-- Wednesday -->
+<div class="flex-1 flex flex-col items-center gap-3 group">
+<div class="w-full bg-surface-container-high rounded-t-lg relative">
+<div class="absolute bottom-0 w-full bg-primary-container/40 rounded-t-lg h-[55%] transition-all group-hover:bg-tertiary/60"></div>
+</div>
+<span class="font-label-sm text-on-surface-variant">Wed</span>
+</div>
+<!-- Thursday -->
+<div class="flex-1 flex flex-col items-center gap-3 group">
+<div class="w-full bg-surface-container-high rounded-t-lg relative">
+<div class="absolute bottom-0 w-full bg-primary-container/40 rounded-t-lg h-[85%] border-t-2 border-tertiary transition-all group-hover:bg-tertiary/60"></div>
+</div>
+<span class="font-label-sm text-on-surface-variant">Thu</span>
+</div>
+<!-- Friday -->
+<div class="flex-1 flex flex-col items-center gap-3 group">
+<div class="w-full bg-surface-container-high rounded-t-lg relative">
+<div class="absolute bottom-0 w-full bg-primary-container/40 rounded-t-lg h-[95%] border-t-2 border-tertiary transition-all group-hover:bg-tertiary/60"></div>
+</div>
+<span class="font-label-sm text-on-surface-variant">Fri</span>
+</div>
+<!-- Saturday -->
+<div class="flex-1 flex flex-col items-center gap-3 group">
+<div class="w-full bg-surface-container-high rounded-t-lg relative">
+<div class="absolute bottom-0 w-full bg-tertiary rounded-t-lg h-[100%] transition-all group-hover:brightness-110"></div>
+</div>
+<span class="font-label-sm text-on-surface-variant font-bold">Sat</span>
+</div>
+<!-- Sunday -->
+<div class="flex-1 flex flex-col items-center gap-3 group">
+<div class="w-full bg-surface-container-high rounded-t-lg relative">
+<div class="absolute bottom-0 w-full bg-primary-container/40 rounded-t-lg h-[75%] transition-all group-hover:bg-tertiary/60"></div>
+</div>
+<span class="font-label-sm text-on-surface-variant">Sun</span>
+</div>
+</div>
+</div>
+<!-- Orders Pie Chart -->
+<div class="bg-surface-container-lowest p-8 rounded-xl shadow-[0_4px_15px_rgba(62,39,35,0.04)] border border-outline-variant/10 flex flex-col">
+<h3 class="font-headline-sm text-headline-sm font-display-lg text-primary mb-8">Orders by Category</h3>
+<div class="flex-1 flex flex-col justify-center items-center">
+<!-- CSS Custom Pie Representation -->
+<div class="w-48 h-48 rounded-full relative mb-8 flex items-center justify-center border-[12px] border-surface-container-high" style="background: conic-gradient(#3e2723 0% 45%, #735c00 45% 75%, #ccc6b1 75% 100%);">
+<div class="absolute inset-2 bg-surface-container-lowest rounded-full flex flex-col items-center justify-center shadow-inner">
+<span class="font-headline-md text-primary">842</span>
+<span class="font-label-sm text-on-surface-variant">Total Orders</span>
+</div>
+</div>
+<div class="w-full space-y-3">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-3">
+<div class="w-3 h-3 rounded-full bg-primary-container"></div>
+<span class="font-body-md">Specialty Coffee</span>
+</div>
+<span class="font-label-lg text-primary">45%</span>
+</div>
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-3">
+<div class="w-3 h-3 rounded-full bg-tertiary"></div>
+<span class="font-body-md">Handcrafted Pastry</span>
+</div>
+<span class="font-label-lg text-primary">30%</span>
+</div>
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-3">
+<div class="w-3 h-3 rounded-full bg-secondary-fixed-dim"></div>
+<span class="font-body-md">All-Day Brunch</span>
+</div>
+<span class="font-label-lg text-primary">25%</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Export Section -->
+<div class="mt-section-gap flex flex-col items-center">
+<div class="w-full max-w-2xl bg-surface-container-low border border-outline-variant/30 p-8 rounded-xl flex flex-col md:flex-row items-center gap-6">
+<div class="flex-1 text-center md:text-left">
+<h4 class="font-headline-sm text-headline-sm font-display-lg text-primary mb-1">Generate Monthly Report</h4>
+<p class="font-body-sm text-on-surface-variant">Includes full inventory audit, labor costs, and revenue reconciliation for the current billing period.</p>
+</div>
+<button class="bg-primary-container text-on-primary-container px-8 py-4 rounded-lg flex items-center gap-3 border-b-2 border-tertiary hover:scale-[0.98] active:scale-95 transition-all shadow-lg shrink-0">
+<span class="material-symbols-outlined">picture_as_pdf</span>
+<span class="font-label-lg font-bold">Export as PDF</span>
+</button>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-safe bg-surface-container border-t border-tertiary-fixed/20 shadow-[0_-4px_15px_rgba(62,39,35,0.04)] rounded-t-full">
+<div class="flex flex-col items-center justify-center text-on-secondary-fixed-variant opacity-60 py-2 hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-sm text-label-sm font-body-lg">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-secondary-fixed-variant opacity-60 py-2 hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined" data-icon="restaurant_menu">restaurant_menu</span>
+<span class="font-label-sm text-label-sm font-body-lg">Menu</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-secondary-fixed-variant opacity-60 py-2 hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="font-label-sm text-label-sm font-body-lg">Orders</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-primary-fixed-variant border-t-2 border-tertiary py-2 transition-all">
+<span class="material-symbols-outlined text-primary" data-icon="analytics" style="font-variation-settings: 'FILL' 1;">analytics</span>
+<span class="font-label-sm text-label-sm font-body-lg text-primary">Insights</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-secondary-fixed-variant opacity-60 py-2 hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-sm text-label-sm font-body-lg">Settings</span>
+</div>
+</nav>
+</body></html>

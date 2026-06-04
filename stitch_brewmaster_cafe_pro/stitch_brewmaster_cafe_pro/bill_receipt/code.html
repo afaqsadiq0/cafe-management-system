@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&amp;family=Hanken+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .receipt-serrated {
+            position: relative;
+            background: white;
+        }
+        .receipt-serrated::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background-image: radial-gradient(circle, transparent 70%, white 70%);
+            background-size: 20px 20px;
+            background-position: 0 -10px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-background": "#2e150b",
+                        "on-primary-fixed": "#2b1613",
+                        "surface-bright": "#fff8f6",
+                        "tertiary-fixed": "#ffe088",
+                        "error-container": "#ffdad6",
+                        "outline-variant": "#d3c3c0",
+                        "primary": "#271310",
+                        "on-secondary-container": "#676351",
+                        "primary-container": "#3e2723",
+                        "surface-container": "#ffe9e3",
+                        "primary-fixed": "#ffdad4",
+                        "surface-container-highest": "#ffdbcf",
+                        "outline": "#827472",
+                        "inverse-surface": "#46291e",
+                        "on-secondary-fixed": "#1e1c0e",
+                        "secondary-fixed": "#e9e2cc",
+                        "inverse-primary": "#e3beb8",
+                        "on-primary": "#ffffff",
+                        "primary-fixed-dim": "#e3beb8",
+                        "on-tertiary-fixed": "#241a00",
+                        "error": "#ba1a1a",
+                        "background": "#fff8f6",
+                        "on-tertiary-container": "#4e3d00",
+                        "on-surface-variant": "#504442",
+                        "on-error": "#ffffff",
+                        "surface-tint": "#745853",
+                        "on-primary-container": "#ae8d87",
+                        "on-tertiary-fixed-variant": "#574500",
+                        "surface-variant": "#ffdbcf",
+                        "surface-container-high": "#ffe2d9",
+                        "on-surface": "#2e150b",
+                        "tertiary-container": "#cba72f",
+                        "inverse-on-surface": "#ffede7",
+                        "surface-dim": "#ffd0bf",
+                        "on-primary-fixed-variant": "#5b403c",
+                        "tertiary-fixed-dim": "#e9c349",
+                        "surface-container-low": "#fff1ec",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed-variant": "#4a4737",
+                        "on-secondary": "#ffffff",
+                        "secondary-container": "#e6e0c9",
+                        "secondary": "#625f4d",
+                        "surface": "#fff8f6",
+                        "tertiary": "#735c00",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "secondary-fixed-dim": "#ccc6b1"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "unit": "8px",
+                        "container-padding-mobile": "16px",
+                        "section-gap": "48px",
+                        "gutter": "24px",
+                        "container-padding-desktop": "40px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["EB Garamond"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "headline-sm": ["EB Garamond"],
+                        "label-lg": ["Hanken Grotesk"],
+                        "label-sm": ["Hanken Grotesk"],
+                        "headline-md": ["EB Garamond"],
+                        "body-sm": ["Hanken Grotesk"],
+                        "headline-lg": ["EB Garamond"],
+                        "body-md": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-bright text-on-surface font-body-md min-h-screen">
+<header class="bg-background dark:bg-background border-b border-outline-variant/30 flex justify-between items-center w-full px-container-padding-mobile md:px-container-padding-desktop py-4 max-w-7xl mx-auto sticky top-0 z-40">
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-primary dark:text-primary-fixed" data-icon="menu">menu</button>
+<h1 class="font-headline-md text-headline-md text-primary dark:text-primary-fixed">Artisanal Cafe</h1>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex gap-8">
+<span class="font-label-lg text-label-lg text-on-surface-variant cursor-pointer hover:text-tertiary transition-colors">Dashboard</span>
+<span class="font-label-lg text-label-lg text-primary border-b-2 border-tertiary cursor-pointer">Orders</span>
+<span class="font-label-lg text-label-lg text-on-surface-variant cursor-pointer hover:text-tertiary transition-colors">Menu</span>
+</div>
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center border border-outline-variant/30 overflow-hidden">
+<img alt="Profile" data-alt="A professional close-up portrait of a sophisticated cafe manager in a premium espresso bar setting. The lighting is warm and cinematic, emphasizing the rich brown tones of the background and the polished gold accents of the interior. The image conveys a sense of artisanal expertise and high-end hospitality management within a luxury cafe environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfcqn6-15vKSC7g5bJIHaDvorVN3BUN7Ml_C_E-jBPehXUFm_gv_z68yzu4-MAT9z5sn3_p5ThLkPpA-2KU2edvTz_wgiAmbLr4TP5kRHL6vkFxGezOcwZvkUxbz2nO6ucJeaIDsCt0KnXi5l3if9eGZUEPfZtGgb1puty9FcR0OurjH5h8UrWutGgE7MYGFL6t4j30c-UpnKpeUiB__SyEXALsrjXi1ufi6H7mCl6zrjzTOb7kqZ1GmEKoWHCZwHj2Ui2Sadrcb23"/>
+</div>
+</div>
+</header>
+<main class="max-w-4xl mx-auto px-container-padding-mobile md:px-container-padding-desktop py-12 pb-32">
+<div class="flex flex-col md:flex-row gap-gutter items-start">
+<div class="w-full md:w-[450px] mx-auto">
+<div class="receipt-serrated shadow-[0_15px_40px_-15px_rgba(62,39,35,0.15)] rounded-t-xl overflow-hidden border border-outline-variant/20">
+<div class="bg-primary-container p-8 text-center">
+<h2 class="font-display-lg text-display-lg text-on-primary-fixed tracking-tight leading-none mb-1">The Gilded Bean</h2>
+<p class="font-label-sm text-label-sm text-on-primary-container uppercase tracking-widest opacity-80">Premium Establishment</p>
+</div>
+<div class="p-8 space-y-8">
+<div class="flex justify-between items-end border-b border-dotted border-outline-variant pb-6">
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Order #SC-8294</p>
+<p class="font-body-sm text-body-sm text-on-surface">Oct 24, 2023 · 14:45</p>
+</div>
+<div class="text-right">
+<p class="font-label-sm text-label-sm text-on-surface-variant">Server</p>
+<p class="font-body-sm text-body-sm text-on-surface">Julian M.</p>
+</div>
+</div>
+<table class="w-full text-left">
+<thead>
+<tr class="font-label-sm text-label-sm text-on-surface-variant border-b border-outline-variant/30">
+<th class="py-2 font-display-lg italic">Item Name</th>
+<th class="py-2 text-center">Qty</th>
+<th class="py-2 text-right">Unit</th>
+<th class="py-2 text-right">Total</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-on-surface">
+<tr class="border-b border-dotted border-outline-variant/40">
+<td class="py-4 font-display-lg text-lg">Single Estate Espresso</td>
+<td class="py-4 text-center">2</td>
+<td class="py-4 text-right">$4.50</td>
+<td class="py-4 text-right">$9.00</td>
+</tr>
+<tr class="border-b border-dotted border-outline-variant/40">
+<td class="py-4 font-display-lg text-lg">Velvet Gold Latte</td>
+<td class="py-4 text-center">1</td>
+<td class="py-4 text-right">$7.50</td>
+<td class="py-4 text-right">$7.50</td>
+</tr>
+<tr class="border-b border-dotted border-outline-variant/40">
+<td class="py-4 font-display-lg text-lg">Artisanal Scone</td>
+<td class="py-4 text-center">1</td>
+<td class="py-4 text-right">$5.25</td>
+<td class="py-4 text-right">$5.25</td>
+</tr>
+</tbody>
+</table>
+<div class="space-y-3 pt-4 border-t border-outline-variant/30">
+<div class="flex justify-between font-body-md">
+<span class="text-on-surface-variant">Subtotal</span>
+<span>$21.75</span>
+</div>
+<div class="flex justify-between font-body-md">
+<span class="text-on-surface-variant">Service Tax (5%)</span>
+<span>$1.09</span>
+</div>
+<div class="flex justify-between items-center pt-4 mt-4 border-t-2 border-primary-container">
+<span class="font-headline-sm text-headline-sm text-primary">Grand Total</span>
+<span class="font-display-lg text-headline-lg text-tertiary">$22.84</span>
+</div>
+</div>
+<div class="flex justify-center gap-8 py-4">
+<button class="flex flex-col items-center gap-1 group">
+<div class="w-12 h-12 rounded-full border border-tertiary flex items-center justify-center text-tertiary group-hover:bg-tertiary group-hover:text-on-tertiary transition-all">
+<span class="material-symbols-outlined" data-icon="print">print</span>
+</div>
+<span class="font-label-sm text-label-sm text-tertiary">Print</span>
+</button>
+<button class="flex flex-col items-center gap-1 group">
+<div class="w-12 h-12 rounded-full border border-tertiary flex items-center justify-center text-tertiary group-hover:bg-tertiary group-hover:text-on-tertiary transition-all">
+<span class="material-symbols-outlined" data-icon="share">share</span>
+</div>
+<span class="font-label-sm text-label-sm text-tertiary">Share</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="flex-1 w-full space-y-gutter">
+<div class="bg-white p-8 rounded-xl shadow-[0_4px_20px_rgba(62,39,35,0.05)] border border-outline-variant/20">
+<h3 class="font-headline-sm text-headline-sm text-primary mb-6">Payment Method</h3>
+<div class="grid grid-cols-1 gap-4">
+<button class="flex items-center gap-4 p-4 rounded-lg border-2 border-outline-variant/20 hover:border-tertiary hover:bg-surface-container-low transition-all group text-left">
+<span class="material-symbols-outlined text-tertiary bg-tertiary/10 p-3 rounded-full" data-icon="payments">payments</span>
+<div>
+<p class="font-label-lg text-label-lg text-on-surface">Cash Payment</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Process manual register entry</p>
+</div>
+</button>
+<button class="flex items-center gap-4 p-4 rounded-lg border-2 border-tertiary bg-surface-container-low transition-all group text-left ring-2 ring-tertiary/20">
+<span class="material-symbols-outlined text-tertiary bg-tertiary/10 p-3 rounded-full" data-icon="credit_card">credit_card</span>
+<div class="flex-1">
+<p class="font-label-lg text-label-lg text-on-surface">Credit / Debit Card</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Tap, Chip, or Swipe</p>
+</div>
+<span class="material-symbols-outlined text-tertiary" data-icon="check_circle" data-weight="fill">check_circle</span>
+</button>
+<button class="flex items-center gap-4 p-4 rounded-lg border-2 border-outline-variant/20 hover:border-tertiary hover:bg-surface-container-low transition-all group text-left">
+<span class="material-symbols-outlined text-tertiary bg-tertiary/10 p-3 rounded-full" data-icon="contactless">contactless</span>
+<div>
+<p class="font-label-lg text-label-lg text-on-surface">Mobile Pay</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Apple Pay, Google Pay, QR</p>
+</div>
+</button>
+</div>
+</div>
+<div class="bg-white p-8 rounded-xl shadow-[0_4px_20px_rgba(62,39,35,0.05)] border border-outline-variant/20">
+<h3 class="font-headline-sm text-headline-sm text-primary mb-4">Customer Notes</h3>
+<textarea class="w-full h-24 rounded-lg border-outline-variant/30 focus:border-tertiary focus:ring-tertiary bg-surface-container-low font-body-md p-4 placeholder-on-surface-variant/50" placeholder="Add specific order notes or customer requests..."></textarea>
+</div>
+<button class="w-full bg-primary-container text-on-primary-fixed py-6 rounded-full font-label-lg text-lg tracking-widest shadow-lg border-b-4 border-tertiary active:scale-[0.98] transition-all flex items-center justify-center gap-3">
+<span class="material-symbols-outlined" data-icon="check_circle">check_circle</span>
+                    MARK AS PAID
+                </button>
+</div>
+</div>
+</main>
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-safe bg-surface-container border-t border-tertiary-fixed/20 shadow-[0_-4px_15px_rgba(62,39,35,0.04)] md:hidden">
+<a class="flex flex-col items-center justify-center text-on-secondary-fixed-variant opacity-60 py-2" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-secondary-fixed-variant opacity-60 py-2" href="#">
+<span class="material-symbols-outlined" data-icon="restaurant_menu">restaurant_menu</span>
+<span class="font-label-sm text-label-sm">Menu</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-primary-fixed-variant border-t-2 border-tertiary py-2 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="font-label-sm text-label-sm">Orders</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-secondary-fixed-variant opacity-60 py-2" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-label-sm text-label-sm">Insights</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-secondary-fixed-variant opacity-60 py-2" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-sm text-label-sm">Settings</span>
+</a>
+</nav>
+</body></html>
