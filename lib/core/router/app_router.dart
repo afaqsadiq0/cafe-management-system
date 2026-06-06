@@ -18,10 +18,45 @@ import '../../features/profile/presentation/profile_screen.dart';
 import '../../features/dashboard/presentation/main_shell.dart';
 import '../../features/tables/presentation/table_management_screen.dart';
 import '../../features/kds/presentation/kds_screen.dart';
+import '../supabase/supabase_config.dart';
+
+// A ChangeNotifier that listens to Supabase auth state changes
+// and notifies GoRouter to re-evaluate redirects on login/logout.
+class _AuthNotifier extends ChangeNotifier {
+  _AuthNotifier() {
+    SupabaseConfig.client.auth.onAuthStateChange.listen((_) {
+      notifyListeners();
+    });
+  }
+}
+
+final _authNotifier = _AuthNotifier();
 
 final routerProvider = Provider<GoRouter>((ref) {
   return GoRouter(
     initialLocation: '/',
+    refreshListenable: _authNotifier,
+    redirect: (context, state) {
+      final session = SupabaseConfig.client.auth.currentSession;
+      final isLoggedIn = session != null;
+
+      final isSplash = state.uri.path == '/';
+      final isAuthRoute = state.uri.path == '/login' ||
+          state.uri.path == '/signup' ||
+          state.uri.path == '/forgot-password';
+
+      // If not logged in and trying to access protected route → send to login
+      if (!isLoggedIn && !isAuthRoute && !isSplash) {
+        return '/login';
+      }
+
+      // If logged in and on auth/splash page → send to dashboard
+      if (isLoggedIn && (isAuthRoute || isSplash)) {
+        return '/dashboard';
+      }
+
+      return null; // No redirect needed
+    },
     routes: [
       GoRoute(
         path: '/',
@@ -49,7 +84,8 @@ final routerProvider = Provider<GoRouter>((ref) {
         ),
       ),
       StatefulShellRoute.indexedStack(
-        builder: (context, state, navigationShell) => MainShell(navigationShell: navigationShell),
+        builder: (context, state, navigationShell) =>
+            MainShell(navigationShell: navigationShell),
         branches: [
           StatefulShellBranch(
             routes: [

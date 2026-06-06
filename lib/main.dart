@@ -41,21 +41,23 @@ class _MyCafeAppState extends ConsumerState<MyCafeApp> {
   @override
   Widget build(BuildContext context) {
     final router = ref.watch(routerProvider);
+    final themeMode = ref.watch(themeModeProvider);
 
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'MY Cafe',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
-      themeMode: ref.watch(themeModeProvider),
-      home: _MobileFrame(router: router),
+      themeMode: themeMode,
+      routerConfig: router,
+      builder: (context, child) => _MobileFrame(child: child),
     );
   }
 }
 
 class _MobileFrame extends StatelessWidget {
-  final dynamic router;
-  const _MobileFrame({required this.router});
+  final Widget? child;
+  const _MobileFrame({required this.child});
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +65,7 @@ class _MobileFrame extends StatelessWidget {
 
     if (!isWeb) {
       // Mobile: full screen as normal
-      return Router.withConfig(config: router);
+      return child ?? const SizedBox.shrink();
     }
 
     // Web/Desktop: centered mobile frame
@@ -93,7 +95,7 @@ class _MobileFrame extends StatelessWidget {
             child: Stack(
               children: [
                 // App content
-                Router.withConfig(config: router),
+                child ?? const SizedBox.shrink(),
                 // Phone top notch overlay
                 Positioned(
                   top: 0,
